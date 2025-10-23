@@ -4,12 +4,16 @@ const app = new Koa();
 
 app.use(ctx => {
   if(ctx.path === '/good'){
-    return ctx.body = 'Hello good';
+    ctx.body = 'Hello good';
+    return;
   }
-  fs.readFile('somefile.txt', (err, data) => {
-    if (err) throw err;
-    console.log('data:', data);
-    return ctx.body = 'Hello Koa';
+  return new Promise((resolve, reject) => {
+    fs.readFile('somefile.txt', (err, data) => {
+      if (err) reject(err);
+      console.log('data:', data);
+      ctx.body = data;
+      resolve();
+    });
   });
 });
 
