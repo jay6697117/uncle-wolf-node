@@ -2,3 +2,6 @@ node_modules
 /node_modules
 node_modules/**
 pnpm-lock.yaml
+
+# Keep the oversized local reference PDF out of Git history.
+/狼书(卷1)：更了不起的Node.js.pdf
